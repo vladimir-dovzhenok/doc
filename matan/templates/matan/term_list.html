@@ -1,0 +1,12 @@
+{% extends 'matan/base.html' %}
+{% block title %}
+    Термины
+{% endblock %}
+{% block term %}
+    {% if term_list %}
+        {% for term in term_list%}
+            <h2><a href="{% url 'term_detail' pk=term.id %}">{{ term.title }}</a></h2>
+            <p>{{ term.determination }}</p>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

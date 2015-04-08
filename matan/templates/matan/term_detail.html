@@ -1,0 +1,10 @@
+{% extends 'matan/base.html' %}
+{% block title %}{{ term.title }}{% endblock %}
+{% block term %}
+    {% if term %}
+
+            <h2>{{ term.title }}</h2>
+            <p>{{ term.determination  }}</p>
+
+    {% endif %}
+{% endblock %}

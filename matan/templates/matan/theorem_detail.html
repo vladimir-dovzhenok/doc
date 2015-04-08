@@ -1,0 +1,19 @@
+{% extends 'matan/base.html' %}
+{% block title %}{{ theorem.title }}{% endblock %}
+{% block theorema %}
+    {% if theorem %}
+        <h2>{{ theorem.title }}</h2>
+        <p>{{ theorem.substantiation }}</p>
+        {% for author in theorem.author.all %}
+            <a href="{% url 'author_detail' pk=author.id %}">{{ author }}</a>
+            {% if not forloop.last %}, {% endif %}
+        {% endfor %}
+        <hr>
+        Термины:
+        {% for term in theorem.term.all %}
+            <a href="{% url 'term_detail' pk=term.id %}">{{ term }}</a>
+             {% if not forloop.last %}, {% endif %}
+        {% endfor %}
+
+    {% endif %}
+{% endblock %}
