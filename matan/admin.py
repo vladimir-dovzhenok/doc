@@ -3,7 +3,7 @@ from django.contrib import admin
 from matan.models import Author, Categories, Term, Theorem
 
 class AuthorAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'last_name')
+    list_display = ('last_name', 'first_name')
 
 class TheoremAdmin(admin.ModelAdmin):
     list_display = ('title', 'substantiation', 'author_name')

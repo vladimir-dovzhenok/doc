@@ -1,11 +1,11 @@
 {% extends 'matan/base.html' %}
 {% block title %}Авторы{% endblock %}
-{% block author %}
+{% block content %}
     {% if author_list %}
         {% for author in author_list %}
             <h2><a href="{% url 'author_detail' pk=author.id %}">
                 {{ author.first_name }} {{ author.last_name }}</a></h2>
-            <p>{{ author.biagrafiya }}</p>
+            <p class="text-justify">{{ author.biagrafiya }}</p>
         {% endfor %}
     {% endif %}
 {% endblock %}

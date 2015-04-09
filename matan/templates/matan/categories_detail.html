@@ -1,0 +1,19 @@
+{% extends 'matan/base.html' %}
+{% block title %}{{ categories.title }}{% endblock %}
+{% block content %}
+
+            <h2>Категория: {{ categories.title }}</h2>
+            <p class="text-justify">{{ categories.text }}</p>
+            <h4>Подкатегории</h4>
+            <hr>
+            {% for theorem in categories.theorem.all %}
+            <p><a href="{% url 'theorem_detail' pk=theorem.id %}">{{ theorem }}</a></p>
+        {% endfor %}
+            <hr>
+            <h4>Страницы в категории «{{ categories.title }}»</h4>
+            <hr>
+            {% for term in categories.term.all %}
+                <p><a href="{% url 'term_detail' pk=term.id %}">{{ term }}</a></p>
+            {% endfor %}
+
+{% endblock %}

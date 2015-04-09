@@ -35,12 +35,28 @@ class TermDetail(DetailView):
     template_name='matan/term_detail.html'
     context_object_name='term'
 
+class CategoriesView(ListView):
+    model=Categories
+    template_name='matan/categories.html'
+    context_object_name='categories_list'
+
+class CategoriesDetail(DetailView):
+    model=Categories
+    template_name='matan/categories_detail.html'
+    context_object_name='categories'
+
 class PoiskView(View):
     def get(self, request, q=''):
+
         poisk=[]
         if 'q' in request.GET:
             q = request.GET['q']
-            poisk = Theorem.objects.filter(title__iexact=q)
+        if not poisk:
+                poisk=Theorem.objects.filter(title__icontains=q)
+        if not poisk:
+                poisk=Term.objects.filter(title__icontains=q)
+        if not poisk:
+                poisk=Author.objects.filter(last_name__icontains=q)
         return render_to_response('matan/poisk.html', {'poisk': poisk, 'query': q})
 '''
 def poisk(request):

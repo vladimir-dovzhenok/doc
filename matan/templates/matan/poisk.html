@@ -7,12 +7,13 @@
 <body>
     <p>Вы искали {{ query }}</p>
     {% if poisk %}
-        <p>Найдено {{poisk|length}} новостей</p>
+        <p>Найдено {{poisk|length}}</p>
+        {% for i in poisk %}
             <ul>
-                {% for i in poisk %}
-                <li>{{ i.title }}</li>
-                {% endfor %}
-            <ul>
+                <a href=""><li>{{ i.title }}{{ i.last_name }} {{ i.first_name }}</li></a>
+
+            </ul>
+        {% endfor %}
     {% endif %}
 </body>
 </html>

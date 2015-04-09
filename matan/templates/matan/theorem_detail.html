@@ -1,9 +1,9 @@
 {% extends 'matan/base.html' %}
 {% block title %}{{ theorem.title }}{% endblock %}
-{% block theorema %}
+{% block content %}
     {% if theorem %}
         <h2>{{ theorem.title }}</h2>
-        <p>{{ theorem.substantiation }}</p>
+        <p class="text-justify">{{ theorem.substantiation }}</p>
         {% for author in theorem.author.all %}
             <a href="{% url 'author_detail' pk=author.id %}">{{ author }}</a>
             {% if not forloop.last %}, {% endif %}

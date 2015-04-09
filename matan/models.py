@@ -3,6 +3,7 @@ from django.db import models
 
 class Categories(models.Model):
     title = models.CharField(max_length=100, verbose_name=u'Категория')
+    text = models.TextField(null=True, verbose_name=u'Текст')
     theorem = models.ManyToManyField('Theorem', verbose_name=u'Теорема')
     term = models.ManyToManyField('Term', verbose_name=u'Термин')
 

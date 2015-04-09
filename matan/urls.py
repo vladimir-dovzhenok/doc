@@ -6,7 +6,7 @@ from matan import views
 
 urlpatterns = patterns('',
     url(r'^$', TemplateView.as_view(
-        template_name='matan/base.html')),
+        template_name='matan/base.html'), name='base'),
     url(r'^author/$', views.AuthorView.as_view()),
     url(r'^author/(?P<pk>\d+)/$', views.AuthorDetail.as_view(), name='author_detail'),
     url(r'^theorem/$', views.TheoremView.as_view()),
@@ -14,4 +14,6 @@ urlpatterns = patterns('',
     url(r'^term/$', views.TermView.as_view()),
     url(r'^term/(?P<pk>\d+)$', views.TermDetail.as_view(), name='term_detail'),
     url(r'^poisk/$', views.PoiskView.as_view()),
+    url(r'^categories/$', views.CategoriesView.as_view(), name='categories_list'),
+    url(r'^categories/(?P<pk>\d+)$', views.CategoriesDetail.as_view(), name='categories_detail'),
     )

@@ -1,8 +1,8 @@
 {% extends 'matan/base.html' %}
 {% block title %}{{ author.last_name }}{% endblock %}
-{% block author %}
+{% block content %}
     {% if author %}
             <h2>{{ author.first_name }} {{ author.last_name }}</h2>
-            <p>{{ author.biagrafiya }}</p>
+            <p class="text-justify">{{ author.biagrafiya }}</p>
     {% endif %}
 {% endblock %}

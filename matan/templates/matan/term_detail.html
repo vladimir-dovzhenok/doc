@@ -1,10 +1,10 @@
 {% extends 'matan/base.html' %}
 {% block title %}{{ term.title }}{% endblock %}
-{% block term %}
+{% block content %}
     {% if term %}
 
             <h2>{{ term.title }}</h2>
-            <p>{{ term.determination  }}</p>
+            <p class="text-justify">{{ term.determination  }}</p>
 
     {% endif %}
 {% endblock %}
