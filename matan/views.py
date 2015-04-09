@@ -46,17 +46,18 @@ class CategoriesDetail(DetailView):
     context_object_name='categories'
 
 class PoiskView(View):
-    def get(self, request, q=''):
-
-        poisk=[]
+    def get(self, request):
         if 'q' in request.GET:
             q = request.GET['q']
+        #называть переменные одной буквой - дурной тон. со временем не понять зачем эта переменная была создана
+        #занимается поиском - search, содержит результат - result, и т.д 
+        #английский хотябы здесь пригодится. хотя и дальше тоже
+
+        poisk = Theorem.objects.filter(title__icontains=q)
         if not poisk:
-                poisk=Theorem.objects.filter(title__icontains=q)
+            poisk = Term.objects.filter(title__icontains=q)
         if not poisk:
-                poisk=Term.objects.filter(title__icontains=q)
-        if not poisk:
-                poisk=Author.objects.filter(last_name__icontains=q)
+            poisk = Author.objects.filter(last_name__icontains=q)
         return render_to_response('matan/poisk.html', {'poisk': poisk, 'query': q})
 '''
 def poisk(request):
