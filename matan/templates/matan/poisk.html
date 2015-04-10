@@ -5,7 +5,7 @@
         <p>Найдено {{poisk|length}}</p>
         {% for i in poisk %}
             <ul>
-                <a href=""><li>{{ i.title }}{{ i.last_name }} {{ i.first_name }}</li></a>
+                <a href="{% url 'theorem_detail' pk=theorem.id %}"><li>{{ i.title }}{{ i.last_name }} {{ i.first_name }}</li></a>
 
             </ul>
         {% endfor %}

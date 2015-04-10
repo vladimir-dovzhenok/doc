@@ -15,24 +15,12 @@
   <div class="collapse navbar-collapse" id="b-menu">
     <ul class="nav navbar-nav navbar-left">
       <li class="active"><a href="{% url 'base' %}"><span class="glyphicon glyphicon-home"></span> Главная</a></li>
-      <li class="dropdown">
-        <a href="{% url 'categories_list' %}" class="dropdown-toggle" data-toggle="dropdown">
-            <span class="glyphicon glyphicon-list"></span> Категории <b class="caret"></b></a>
+      <li><a href="{% url 'categories_list' %}" class="dropdown-toggle" data-toggle="dropdown">Категории </a>
       </li>
-      {% comment %}
-        <li><a href="#">Категории</a>
-        <ul class="subs">
-         <li><a href="{% url 'categories_list' %}">Категории</a></li>
-         <li><a href="#">Фон для сайта</a></li>
-         <li><a href="#">Меню для сайта</a></li>
-         <li><a href="#">Конструктор меню</a></li>
-         <li><a href="#">Генератор цвета</a></li>
-        </ul>
-      </li>
-      </li>
-      {% endcomment %}
-
-    </ul>
+      <li><a href="{% url 'theorem_list' %}">Теоремы</a></li>
+      <li><a href="{% url 'term_list' %}">Термины</a></li>
+      <li><a href="{% url 'author_list' %}">Авторы</a></li>
+      </ul>
    </div>
   <hr>
 
@@ -41,14 +29,18 @@
             <div class="col-md-2">
             </div>
             <div class="col-md-8">
-            {% if theorem_list %}
-                {% for theorem in theorem_list %}
-                     {{ theorem_list.title }}
-                {% endfor %}
-            {% endif %}
+
                     {% block content %}
-                        Последние записи
-                        {{ theorem_list.title }}
+                        {% if theorem_list %}
+                        {% for theorem in theorem_list %}
+                            <h2><a href="{% url 'theorem_detail' pk=theorem.id %}">{{ theorem.title }}</a></h2>
+                            <p class="text-justify">{{ theorem.substantiation|slice:':500'}}
+                                {% if theorem.substantiation|length >= 500 %}
+                                <a href="{% url 'theorem_detail' pk=theorem.id %}">Читать дальше...</a>
+                                {% endif %}
+                            </p>
+                         {% endfor %}
+                        {% endif %}
 					{% endblock %}
 
             </div>

@@ -4,8 +4,8 @@
     {% if theorem_list %}
         {% for theorem in theorem_list %}
             <h2><a href = "{% url 'theorem_detail'  pk=theorem.id %}">{{ theorem.title }}</a></h2>
-            <p class="text-justify">{{ theorem.substantiation|slice:':1000'}}
-                {% if theorem.substantiation|length >= 1000 %}
+            <p class="text-justify">{{ theorem.substantiation|slice:':200'}}
+                {% if theorem.substantiation|length >= 200 %}
                     <a href="{% url 'theorem_detail' pk=theorem.id %}">Далее...</a>
                 {% endif %}
             </p>

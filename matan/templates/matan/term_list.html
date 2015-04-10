@@ -4,7 +4,11 @@
     {% if term_list %}
         {% for term in term_list%}
             <h2><a href="{% url 'term_detail' pk=term.id %}">{{ term.title }}</a></h2>
-            <p class="text-justify">{{ term.determination }}</p>
+            <p class="text-justify">{{ term.determination|slice:':200' }}
+            {% if term.determination|length >= 200 %}
+                <a href="{% url 'term_detail' pk=term.id %}">Далее...</a>
+            {% endif %}
+            </p>
         {% endfor %}
     {% endif %}
 {% endblock %}

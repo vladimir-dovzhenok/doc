@@ -5,7 +5,11 @@
         {% for author in author_list %}
             <h2><a href="{% url 'author_detail' pk=author.id %}">
                 {{ author.first_name }} {{ author.last_name }}</a></h2>
-            <p class="text-justify">{{ author.biagrafiya }}</p>
+            <p class="text-justify">{{ author.biagrafiya|slice:':200' }}
+            {% if author.biagrafiya >= 200 %}
+                <a href="{% url 'author_detail' pk=author.id %}">Читать дальше...</a>
+            {% endif %}
+            </p>
         {% endfor %}
     {% endif %}
 {% endblock %}
