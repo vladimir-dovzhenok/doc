@@ -4,16 +4,18 @@
     {% if theorem %}
         <h2>{{ theorem.title }}</h2>
         <p class="text-justify">{{ theorem.substantiation }}</p>
+        <h4>Автор:
         {% for author in theorem.author.all %}
             <a href="{% url 'author_detail' pk=author.id %}">{{ author }}</a>
             {% if not forloop.last %}, {% endif %}
         {% endfor %}
+        </h4>
         <hr>
-        Термины:
+        <h4>Термины:
         {% for term in theorem.term.all %}
             <a href="{% url 'term_detail' pk=term.id %}">{{ term }}</a>
              {% if not forloop.last %}, {% endif %}
         {% endfor %}
-
+        </h4>
     {% endif %}
 {% endblock %}

@@ -20,8 +20,16 @@
       <li><a href="{% url 'theorem_list' %}">Теоремы</a></li>
       <li><a href="{% url 'term_list' %}">Термины</a></li>
       <li><a href="{% url 'author_list' %}">Авторы</a></li>
-      </ul>
-   </div>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <form class="form-search" action = '/matan/poisk/' method = 'get'>
+            <div class="input-append">
+                    <input type="text" class="span2 search-query"  name = 'q' placeholder="поиск по сайту">
+                    <button type="submit" class="btn">Найти</button>
+            </div>
+        </form>
+    </ul>
+  </div>
   <hr>
 
     <div class="container">
@@ -29,9 +37,8 @@
             <div class="col-md-2">
             </div>
             <div class="col-md-8">
-
-                    {% block content %}
-                        {% if theorem_list %}
+                {% block content %}
+                    {% if theorem_list %}
                         {% for theorem in theorem_list %}
                             <h2><a href="{% url 'theorem_detail' pk=theorem.id %}">{{ theorem.title }}</a></h2>
                             <p class="text-justify">{{ theorem.substantiation|slice:':500'}}
@@ -39,16 +46,22 @@
                                 <a href="{% url 'theorem_detail' pk=theorem.id %}">Читать дальше...</a>
                                 {% endif %}
                             </p>
+                            <h4>Автор:
+                                {% for author in theorem.author.all %}
+                                        <a href="{% url 'author_detail' pk=author.id %}">{{ author }}</a>
+                                        {% if not forloop.last %}, {% endif %}
+
+                                {% endfor %}
+                            </h4>
+                            <h4>Дата публикации:</h4>
+                            <hr>
                          {% endfor %}
                         {% endif %}
 					{% endblock %}
 
             </div>
             <div class="col-md-2">
-                <form action = '/matan/poisk/' method = 'get'>
-		            <input type = 'text'  name = 'q' placeholder="поиск по сайту">
-		            <input type = 'submit' value = 'Найти'>
-	            </form>
+
             </div>
         </div>
     </div>

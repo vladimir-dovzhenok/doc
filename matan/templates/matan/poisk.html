@@ -3,11 +3,18 @@
     <p>Вы искали {{ query }}</p>
     {% if poisk %}
         <p>Найдено {{poisk|length}}</p>
-        {% for i in poisk %}
-            <ul>
-                <a href="{% url 'theorem_detail' pk=theorem.id %}"><li>{{ i.title }}{{ i.last_name }} {{ i.first_name }}</li></a>
-
-            </ul>
+        <ul>
+        {% if poisk in term.title %}
+         {% for term in poisk.all %}
+             <li><a href="{% url 'term_detail' pk=term.id %}">{{ term }}</a></li>
+         {% endfor %}
+        {% endif %}
+        {% for theorem in poisk %}
+            <li><a href="{% url 'theorem_detail' pk=theorem.id %}">{{ theorem }}</a></li>
         {% endfor %}
+        {% for author in poisk %}
+            <li><a href="{% url 'author_detail' pk=author.id %}">{{ last_name }} {{ first_name }}</a></li>
+        {% endfor %}
+        </ul>
     {% endif %}
 {% endblock %}

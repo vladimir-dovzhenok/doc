@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.http import HttpResponse
 from django.template import RequestContext
+from django.db.models import Q
 from django.shortcuts import render_to_response
 from django.views.generic import View, ListView, DetailView
 from matan.models import Theorem, Term, Categories, Author
@@ -56,7 +57,7 @@ class PoiskView(View):
         if not poisk:
                 poisk=Term.objects.filter(title__icontains=q)
         if not poisk:
-                poisk=Author.objects.filter(last_name__icontains=q)
+                poisk=Author.objects.filter(Q(last_name__icontains=q)|Q(first_name__icontains=q))
         return render_to_response('matan/poisk.html', {'poisk': poisk, 'query': q})
 '''
 def poisk(request):
