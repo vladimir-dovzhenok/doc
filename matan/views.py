@@ -31,6 +31,8 @@ class TermView(ListView):
     template_name='matan/term_list.html'
     context_object_name='term_list'
 
+
+
 class TermDetail(DetailView):
     model=Term
     template_name='matan/term_detail.html'
@@ -48,7 +50,6 @@ class CategoriesDetail(DetailView):
 
 class PoiskView(View):
     def get(self, request, q=''):
-
         poisk=[]
         if 'q' in request.GET:
             q = request.GET['q']
@@ -59,7 +60,18 @@ class PoiskView(View):
         if not poisk:
                 poisk=Author.objects.filter(Q(last_name__icontains=q)|Q(first_name__icontains=q))
         return render_to_response('matan/poisk.html', {'poisk': poisk, 'query': q})
+
+
+def base(request):
+    base=Theorem.objects.all()[:3]
+    return render_to_response('matan/base.html', {'base': base})
 '''
+def alfa(request):
+    list = []
+    list = Theorem.objects.all()[0]
+    for i in list
+        i.list.
+
 def poisk(request):
     if 'q' in request.GET:
         q = request.GET['q']

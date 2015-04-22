@@ -6,7 +6,7 @@ class AuthorAdmin(admin.ModelAdmin):
     list_display = ('last_name', 'first_name')
 
 class TheoremAdmin(admin.ModelAdmin):
-    list_display = ('title', 'substantiation', 'author_name')
+    list_display = ('title', 'author_name')
 
 admin.site.register(Author, AuthorAdmin)
 admin.site.register(Theorem, TheoremAdmin)

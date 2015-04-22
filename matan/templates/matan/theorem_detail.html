@@ -13,7 +13,7 @@
         <hr>
         <h4>Термины:
         {% for term in theorem.term.all %}
-            <a href="{% url 'term_detail' pk=term.id %}">{{ term }}</a>
+            <a href="{% url 'term_detail' pk=term.id %}">{{ term.title }}</a>
              {% if not forloop.last %}, {% endif %}
         {% endfor %}
         </h4>

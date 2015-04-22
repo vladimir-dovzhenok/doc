@@ -5,10 +5,8 @@ from matan.models import Author, Theorem, Term
 from matan import views
 
 urlpatterns = patterns('',
-    url(r'^$', views.TheoremView.as_view(
-        model=Theorem,
-        template_name='matan/base.html',
-        context_object_name='theorem_list'), name='base'),
+    url(r'^$', 'matan.views.base', name='base'),
+
     url(r'^author/$', views.AuthorView.as_view(), name='author_list'),
     url(r'^author/(?P<pk>\d+)/$', views.AuthorDetail.as_view(), name='author_detail'),
     url(r'^theorem/$', views.TheoremView.as_view(), name='theorem_list'),
