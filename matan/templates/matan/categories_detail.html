@@ -13,7 +13,7 @@
             <h4>Страницы в категории «{{ categories.title }}»</h4>
             <hr>
             {% for term in categories.term.all %}
-                <p><a href="{% url 'term_detail' pk=term.id %}">{{ term }}</a></p>
+                <p><a href="{% url 'term_detail' pk=term.id %}">{{ term.title }}</a></p>
             {% endfor %}
 
 {% endblock %}

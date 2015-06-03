@@ -15,25 +15,21 @@
   <div class="collapse navbar-collapse" id="b-menu">
     <ul class="nav navbar-nav navbar-left">
       <li class="active"><a href="{% url 'base' %}"><span class="glyphicon glyphicon-home"></span> Главная</a></li>
-      <li class="dropdown">
-        <a href="{% url 'categories_list' %}" class="dropdown-toggle" data-toggle="dropdown">
-            <span class="glyphicon glyphicon-list"></span> Категории <b class="caret"></b></a>
+      <li><a href="{% url 'categories_list' %}" class="dropdown-toggle" data-toggle="dropdown">Категории </a>
       </li>
-      {% comment %}
-        <li><a href="#">Категории</a>
-        <ul class="subs">
-         <li><a href="{% url 'categories_list' %}">Категории</a></li>
-         <li><a href="#">Фон для сайта</a></li>
-         <li><a href="#">Меню для сайта</a></li>
-         <li><a href="#">Конструктор меню</a></li>
-         <li><a href="#">Генератор цвета</a></li>
-        </ul>
-      </li>
-      </li>
-      {% endcomment %}
-
+      <li><a href="{% url 'theorem_list' %}">Теоремы</a></li>
+      <li><a href="{% url 'term_list' %}">Термины</a></li>
+      <li><a href="{% url 'author_list' %}">Авторы</a></li>
     </ul>
-   </div>
+    <ul class="nav navbar-nav navbar-right">
+        <form class="form-search" action = '/matan/poisk/' method = 'get'>
+            <div class="input-append">
+                    <input type="text" class="span2 search-query"  name = 'q' placeholder="поиск по сайту">
+                    <button type="submit" class="btn">Найти</button>
+            </div>
+        </form>
+    </ul>
+  </div>
   <hr>
 
     <div class="container">
@@ -41,22 +37,94 @@
             <div class="col-md-2">
             </div>
             <div class="col-md-8">
-            {% if theorem_list %}
-                {% for theorem in theorem_list %}
-                     {{ theorem_list.title }}
-                {% endfor %}
-            {% endif %}
-                    {% block content %}
-                        Последние записи
-                        {{ theorem_list.title }}
+                {% block content %}
+                    {% if base %}
+                        {% for theorem in base %}
+                            <h2><a href="{% url 'theorem_detail' pk=theorem.id %}">{{ theorem.title }}</a></h2>
+                            <p class="text-justify">{{ theorem.substantiation|slice:':300'}}
+                                {% if theorem.substantiation|length >= 300 %}
+                                <a href="{% url 'theorem_detail' pk=theorem.id %}">Читать дальше...</a>
+                                {% endif %}
+                            </p>
+                            <h4>Автор:
+                                {% for author in theorem.author.all %}
+                                        <a href="{% url 'author_detail' pk=author.id %}">{{ author }}</a>
+                                        {% if not forloop.last %}, {% endif %}
+
+                                {% endfor %}
+                            </h4>
+                            <h4>Дата публикации:
+                                {{ theorem.date_pub }}
+                            </h4>
+                            <hr>
+                         {% endfor %}
+                        {% endif %}
 					{% endblock %}
 
             </div>
             <div class="col-md-2">
-                <form action = '/matan/poisk/' method = 'get'>
-		            <input type = 'text'  name = 'q' placeholder="поиск по сайту">
-		            <input type = 'submit' value = 'Найти'>
-	            </form>
+                 <span>Первая буква/цифра в названии:</span>
+        <span>&nbsp;</span>
+        <a href="/title/%25d0%25b0/" class="alf">а</a>
+        <a href="/title/%25d0%25b1/" class="alf">б</a>
+        <a href="/title/%25d0%25b2/" class="alf">в</a>
+        <a href="/title/%25d0%25b3/" class="alf">г</a>
+        <a href="/title/%25d0%25b4/" class="alf">д</a>
+        <a href="/title/%25d0%25b5/" class="alf">е</a>
+        <a href="/title/%25d1%2591/" class="alf">ё</a>
+        <a href="/title/%25d0%25b6/" class="alf">ж</a>
+        <a href="/title/%25d0%25b7/" class="alf">з</a>
+        <a href="/title/%25d0%25b8/" class="alf">и</a>
+        <a href="/title/%25d0%25b9/" class="alf">й</a>
+        <a href="/title/%25d0%25ba/" class="alf">к</a>
+        <a href="/title/%25d0%25bb/" class="alf">л</a>
+        <a href="/title/%25d0%25bc/" class="alf">м</a>
+        <a href="/title/%25d0%25bd/" class="alf">н</a>
+        <a href="/title/%25d0%25be/" class="alf">о</a>
+        <a href="/title/%25d0%25bf/" class="alf">п</a>
+        <a href="/title/%25d1%2580/" class="alf">р</a>
+        <a href="/title/%25d1%2581/" class="alf">с</a>
+        <a href="/title/%25d1%2582/" class="alf">т</a>
+        <a href="/title/%25d1%2583/" class="alf">у</a>
+        <a href="/title/%25d1%2584/" class="alf">ф</a>
+        <a href="/title/%25d1%2585/" class="alf">х</a>
+        <a href="/title/%25d1%2586/" class="alf">ц</a>
+        <a href="/title/%25d1%2587/" class="alf">ч</a>
+        <a href="/title/%25d1%2588/" class="alf">ш</a>
+        <a href="/title/%25d1%2589/" class="alf">щ</a>
+        <a href="/title/%25d1%258b/" class="alf">ы</a>
+        <a href="/title/%25d1%258d/" class="alf">э</a>
+        <a href="/title/%25d1%258e/" class="alf">ю</a>
+        <a href="/title/%25d1%258f/" class="alf">я</a>
+        <br clear="all" />
+                <hr>
+        <a href="/title/a/" class="alf">a</a>
+        <a href="/title/b/" class="alf">b</a>
+        <a href="/title/c/" class="alf">c</a>
+        <a href="/title/d/" class="alf">d</a>
+        <a href="/title/e/" class="alf">e</a>
+        <a href="/title/f/" class="alf">f</a>
+        <a href="/title/g/" class="alf">g</a>
+        <a href="/title/h/" class="alf">h</a>
+        <a href="/title/i/" class="alf">i</a>
+        <a href="/title/j/" class="alf">j</a>
+        <a href="/title/k/" class="alf">k</a>
+        <a href="/title/l/" class="alf">l</a>
+        <a href="/title/m/" class="alf">m</a>
+        <a href="/title/n/" class="alf">n</a>
+        <a href="/title/o/" class="alf">o</a>
+        <a href="/title/p/" class="alf">p</a>
+        <a href="/title/q/" class="alf">q</a>
+        <a href="/title/r/" class="alf">r</a>
+        <a href="/title/s/" class="alf">s</a>
+        <a href="/title/t/" class="alf">t</a>
+        <a href="/title/u/" class="alf">u</a>
+        <a href="/title/v/" class="alf">v</a>
+        <a href="/title/w/" class="alf">w</a>
+        <a href="/title/x/" class="alf">x</a>
+        <a href="/title/y/" class="alf">y</a>
+        <a href="/title/z/" class="alf">z</a>
+        <br clear="all"/>
             </div>
         </div>
     </div>
