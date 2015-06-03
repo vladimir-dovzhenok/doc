@@ -1,18 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 
-<<<<<<< HEAD
-
 class Categories(models.Model):
-=======
-class Date(models.Model):
-    date_pub = models.DateTimeField(null=True, verbose_name='Дата публикации')
-
-    class Meta:
-        abstract = True
-
-class Categories(Date):
->>>>>>> 1e4173a4ab3c075334cb1d13522f01a83d04c4f5
     title = models.CharField(max_length=100, verbose_name=u'Категория')
     text = models.TextField(null=True, verbose_name=u'Текст')
     theorem = models.ManyToManyField('Theorem', verbose_name=u'Теорема')
@@ -21,15 +10,8 @@ class Categories(Date):
     def __unicode__(self):
         return self.title
 
-<<<<<<< HEAD
 
 class Theorem(models.Model):
-=======
-    class Meta:
-        ordering=['title']
-
-class Theorem(Date):
->>>>>>> 1e4173a4ab3c075334cb1d13522f01a83d04c4f5
     title = models.CharField(max_length=100, verbose_name=u'Теорема')
     substantiation = models.TextField(verbose_name=u'Доказательство')
     author = models.ManyToManyField('Author', verbose_name=u'Автор')
@@ -49,6 +31,12 @@ class Theorem(Date):
 
     и потом вызывать другой метод, уже в представлениях, который будет отбирать дочерние элементы theorem.term_set.all() и отображать их
     позже обдумаю - помогу дописать. сейчас уже спать))
+
+    идея состояла в том, что перед сохранением - выполнить проверку на вхождение в текст имеющихся терминов. и потом, при рендере теоремы
+    во вьюшке - уже знать какие термины находятся внутри, и парсить (разделять текст ради ссылок) только по ним.
+    только идея не совсем идеальна, после сохранения теоремы могут быть добавлены новые термины. которые тоже будут внутри главного текста теоремы
+
+    скорее всего вся логика ляжет на views
     '''
 
 
@@ -63,15 +51,8 @@ class Author(Date):
     def __unicode__(self):
         return '%s %s' % (self.first_name, self.last_name)
 
-<<<<<<< HEAD
 
 class Term(models.Model):
-=======
-    class Meta:
-        ordering=['first_name']
-
-class Term(Date):
->>>>>>> 1e4173a4ab3c075334cb1d13522f01a83d04c4f5
     title = models.CharField(max_length=100, verbose_name=u'Термин')
     determination = models.TextField(verbose_name=u'Определение')
     #theorem = models.ManyToManyField('Theorem', ..)

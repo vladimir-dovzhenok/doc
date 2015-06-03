@@ -31,8 +31,6 @@ class TermView(ListView):
     template_name='matan/term_list.html'
     context_object_name='term_list'
 
-
-
 class TermDetail(DetailView):
     model=Term
     template_name='matan/term_detail.html'
@@ -49,12 +47,7 @@ class CategoriesDetail(DetailView):
     context_object_name='categories'
 
 class PoiskView(View):
-<<<<<<< HEAD
     def get(self, request):
-=======
-    def get(self, request, q=''):
-        poisk=[]
->>>>>>> 1e4173a4ab3c075334cb1d13522f01a83d04c4f5
         if 'q' in request.GET:
             q = request.GET['q']
         #называть переменные одной буквой - дурной тон. со временем не понять зачем эта переменная была создана
@@ -65,11 +58,7 @@ class PoiskView(View):
         if not poisk:
             poisk = Term.objects.filter(title__icontains=q)
         if not poisk:
-<<<<<<< HEAD
-            poisk = Author.objects.filter(last_name__icontains=q)
-=======
-                poisk=Author.objects.filter(Q(last_name__icontains=q)|Q(first_name__icontains=q))
->>>>>>> 1e4173a4ab3c075334cb1d13522f01a83d04c4f5
+            poisk = Author.objects.filter(last_name__icontain
         return render_to_response('matan/poisk.html', {'poisk': poisk, 'query': q})
 
 
@@ -82,6 +71,44 @@ def alfa(request):
     list = Theorem.objects.all()[0]
     for i in list
         i.list.
+
+------------------------------------------------------------------
+если ты хотел проработать алфавит, то чуть интереснее будет оформить его так:
+
+class Имя_класса_который_рендерит_страницу_где_будет_алфавит(наследование):
+    template = 'шаблон'
+
+    def get_context_data(self):
+        context = super(Имя_класса_который_рендерит_страницу_где_будет_алфавит, self).get_context_data(self)
+
+        alpha_context = {}
+        alphabit = 'каким то образом создаёшь алфавит, только интерируемый, т.е. который можно обойти циклом'
+        for i in alphabit:
+            result =  Theorem.objects.filter(title__istartswith=i)
+            if result:
+                alpha_context[i] = result
+
+        context['alphabit_dict'] = alpha_context
+
+вроде как должно работать. не обижайся, что написал за тебя. будет ещё много фишек, на которых будешь учится.
+alphabit_dict можно будет использовать циклом в шаблоне и ключ использовать в качестве буквы алфавита, допустим так:
+
+{% for alpha in alpha_context %}
+    <h3>{{}}</h3>
+    <ul>
+        {% for field in alpha_context[alpha] %}
+        <li>{{ field }}</li>
+        {% endfor %}
+    </ul>
+{% endfor %}
+
+только вот не уверен за alpha_context[alpha] внутри шаблона.. может быть придётся брать доступ по ключу иначе.
+выходит так в цикле {% for alpha in alpha_context %} мы перебираем не значения, а ключи словаря. а чтобы получить значения -
+нужно обратиться к словарю через ключ: alpha_context[alpha]
+но результат тоже будет итериремым, query-set`ом, который практически идентичен list. вот для обхода всех его значений и
+используется второй цикл. пусть даже там помещен всего один обьект, заранее ведь не знаем.
+
+-------------------------------------------------------------------
 
 def poisk(request):
     if 'q' in request.GET:
