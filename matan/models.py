@@ -12,6 +12,8 @@ class Categories(models.Model):
 
 
 class Theorem(models.Model):
+    # https://ru.wikipedia.org/wiki/Категория:Теоремы_математического_анализа
+    
     title = models.CharField(max_length=100, verbose_name=u'Теорема')
     substantiation = models.TextField(verbose_name=u'Доказательство')
     author = models.ManyToManyField('Author', verbose_name=u'Автор')
@@ -43,7 +45,7 @@ class Theorem(models.Model):
     class Meta:
         ordering=['title']
 
-class Author(Date):
+class Author(models.Model):
     first_name = models.CharField(max_length=100, verbose_name=u'Имя')
     last_name = models.CharField(max_length=100, verbose_name=u'Фамилия')
     biagrafiya = models.TextField(verbose_name=u'Биаграфия')

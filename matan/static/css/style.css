@@ -1,22 +1,12 @@
+a{
+	color: #1F4D75;
+	text-decoration: none;
+}
 
-.carousel {
-height: 300px;
-margin-bottom: 50px;
+a:hover{
+	text-decoration: none;
 }
-.carousel-caption {
-z-index: 10;
-}
-.carousel .item {
-background-color: rgba(0, 0, 0, 0.8);
-height: 300px;
-}
-.blog-footer {
-	padding: 40px 0;
-	color: #999;
-	text-align: center;
-	background-color: #f9f9f9;
-	border-top: 1px solid #e5e5e5;
-}
-.comment{
-	background-color: rgb(230,250,230);
+
+.main{
+	margin-top: 30px;
 }
