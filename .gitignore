@@ -2,4 +2,7 @@
 bin/
 include/
 lib/
-vld_project/.idea/
+/vld_project/.idea/*
+/.idea/
+*
+db.sqlite3

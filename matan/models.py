@@ -1,5 +1,24 @@
 # -*- coding: utf-8 -*-
 from django.db import models
+from django.contrib.auth.models import User
+
+
+# class Chapter(models.Model):
+#     title = models.CharField(max_length=100, verbose_name=u'section')
+#     section = models.ForeignKey('self', blank=True, null=True)
+#
+#     def __unicode__(self):
+#         return self.title
+#
+#
+# class TextSection(models.Model):
+#     text_chapter = models.ForeignKey(Chapter, verbose_name=u'Chapter')
+#     text = models.TextField(blank=True, null=True)
+#     editor = models.ForeignKey(User, blank=True, null=True)
+#
+#     def __unicode__(self):
+#         return '%s, by %s' % (self.text_chapter, self.editor)
+    
 
 class Categories(models.Model):
     title = models.CharField(max_length=100, verbose_name=u'Категория')
@@ -12,10 +31,15 @@ class Categories(models.Model):
 
 
 class Theorem(models.Model):
+    # https://ru.wikipedia.org/wiki/Категория:Теоремы_математического_анализа
+    
     title = models.CharField(max_length=100, verbose_name=u'Теорема')
     substantiation = models.TextField(verbose_name=u'Доказательство')
     author = models.ManyToManyField('Author', verbose_name=u'Автор')
     term = models.ManyToManyField('Term', verbose_name=u'Термин')
+
+    class Meta:
+        ordering=['title']
 
     def author_name(self):
         return '%s' %(u", ".join([author.last_name for author in self.author.all()]))
@@ -43,10 +67,14 @@ class Theorem(models.Model):
     class Meta:
         ordering=['title']
 
-class Author(Date):
+class Author(models.Model):
     first_name = models.CharField(max_length=100, verbose_name=u'Имя')
     last_name = models.CharField(max_length=100, verbose_name=u'Фамилия')
     biagrafiya = models.TextField(verbose_name=u'Биаграфия')
+    # photo = 
+
+    class Meta:
+        ordering = ["last_name"]
 
     def __unicode__(self):
         return '%s %s' % (self.first_name, self.last_name)
@@ -57,11 +85,11 @@ class Term(models.Model):
     determination = models.TextField(verbose_name=u'Определение')
     #theorem = models.ManyToManyField('Theorem', ..)
 
-    def __unicode__(self):
-        return self.title
-
     class Meta:
         ordering=['title']
+
+    def __unicode__(self):
+        return self.title
 
 
 
