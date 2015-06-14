@@ -1,5 +1,24 @@
 # -*- coding: utf-8 -*-
 from django.db import models
+from django.contrib.auth.models import User
+
+
+# class Chapter(models.Model):
+#     title = models.CharField(max_length=100, verbose_name=u'section')
+#     section = models.ForeignKey('self', blank=True, null=True)
+#
+#     def __unicode__(self):
+#         return self.title
+#
+#
+# class TextSection(models.Model):
+#     text_chapter = models.ForeignKey(Chapter, verbose_name=u'Chapter')
+#     text = models.TextField(blank=True, null=True)
+#     editor = models.ForeignKey(User, blank=True, null=True)
+#
+#     def __unicode__(self):
+#         return '%s, by %s' % (self.text_chapter, self.editor)
+    
 
 class Categories(models.Model):
     title = models.CharField(max_length=100, verbose_name=u'Категория')

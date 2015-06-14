@@ -36,11 +36,11 @@ a:hover{
 
 .autor-prew{
 	margin-bottom: 30px;
-	padding: 1px 15px;
+	padding: 12px 15px;
 }
 
 .autor-prew:hover{
-	padding: 0 14px;
+	padding: 11px 14px;
 	border: 1px solid #ccc;
 	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
 	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
