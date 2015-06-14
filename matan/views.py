@@ -9,7 +9,7 @@ from matan.models import Theorem, Term, Categories, Author
 
 class AuthorView(ListView):
     model = Author
-    template_name = 'matan/author.html'
+    template_name = 'matan/author_prew.html'
     context_object_name = 'author_list'
 
 

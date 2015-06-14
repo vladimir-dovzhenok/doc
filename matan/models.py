@@ -19,6 +19,9 @@ class Theorem(models.Model):
     author = models.ManyToManyField('Author', verbose_name=u'Автор')
     term = models.ManyToManyField('Term', verbose_name=u'Термин')
 
+    class Meta:
+        ordering=['title']
+
     def author_name(self):
         return '%s' %(u", ".join([author.last_name for author in self.author.all()]))
 
@@ -49,6 +52,10 @@ class Author(models.Model):
     first_name = models.CharField(max_length=100, verbose_name=u'Имя')
     last_name = models.CharField(max_length=100, verbose_name=u'Фамилия')
     biagrafiya = models.TextField(verbose_name=u'Биаграфия')
+    # photo = 
+
+    class Meta:
+        ordering = ["last_name"]
 
     def __unicode__(self):
         return '%s %s' % (self.first_name, self.last_name)
@@ -59,11 +66,11 @@ class Term(models.Model):
     determination = models.TextField(verbose_name=u'Определение')
     #theorem = models.ManyToManyField('Theorem', ..)
 
-    def __unicode__(self):
-        return self.title
-
     class Meta:
         ordering=['title']
+
+    def __unicode__(self):
+        return self.title
 
 
 
