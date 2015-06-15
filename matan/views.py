@@ -4,7 +4,7 @@ from django.template import RequestContext
 from django.db.models import Q
 from django.shortcuts import render_to_response
 from django.views.generic import View, ListView, DetailView
-from matan.models import Theorem, Term, Categories, Author
+from matan.models import Theorem, Term, Categories, Author, TextSection, Chapter
 
 
 class AuthorView(ListView):
@@ -29,6 +29,12 @@ class TheoremDetail(DetailView):
     model = Theorem
     template_name = 'matan/theorem_detail.html'
     context_object_name = 'theorem'
+
+    def get_context_data(self, **kwargs):
+        context = super(TheoremDetail, self).get_context_data()
+        # for i in Chapter.objects.filter(__text_sections__terms=self):
+        #     pass
+        return context
 
 
 class TermView(ListView):
