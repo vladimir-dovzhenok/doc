@@ -1,0 +1,8 @@
+.Python
+bin/
+include/
+lib/
+/vld_project/.idea/*
+/.idea/
+*
+db.sqlite3
