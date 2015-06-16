@@ -9,21 +9,15 @@ from matan.models import Theorem, Term, Categories, Author
 
 class AuthorView(ListView):
     model = Author
-    template_name = 'matan/author_prew.html'
+    template_name = 'matan/author.html'
     context_object_name = 'author_list'
 
 
 class AuthorDetail(DetailView):
-<<<<<<< HEAD
-    mdocodel=Author
-    template_name='matan/author_detail.html'
-    context_object_name='author'
-=======
     model = Author
     template_name = 'matan/author_detail.html'
     context_object_name = 'author'
 
->>>>>>> 0cbba8f1f2b4b52c6b06f613140e7ce1c4777714
 
 class TheoremView(ListView):
     model = Theorem
@@ -82,21 +76,18 @@ def base(request):
     return render_to_response('matan/base.html', {'base': base})
 
 
-<<<<<<< HEAD
-=======
-'''
->>>>>>> 0cbba8f1f2b4b52c6b06f613140e7ce1c4777714
+
 def alfa(request):
     list = Theorem.objects.all()
     for i in list:
         return render_to_response('matan/alfa.html', {'i': i, 'list': list})
 
 
-<<<<<<< HEAD
+
+
+
 '''
-=======
-------------------------------------------------------------------
-если ты хотел проработать алфавит, то чуть интереснее будет оформить его так:
+#если ты хотел проработать алфавит, то чуть интереснее будет оформить его так:
 
 class Имя_класса_который_рендерит_страницу_где_будет_алфавит(наследование):
     template = 'шаблон'
@@ -132,9 +123,9 @@ alphabit_dict можно будет использовать циклом в ш�
 но результат тоже будет итериремым, query-set`ом, который практически идентичен list. вот для обхода всех его значений и
 используется второй цикл. пусть даже там помещен всего один обьект, заранее ведь не знаем.
 
--------------------------------------------------------------------
 
->>>>>>> 0cbba8f1f2b4b52c6b06f613140e7ce1c4777714
+
+
 def poisk(request):
     if 'q' in request.GET:
         q = request.GET['q']
