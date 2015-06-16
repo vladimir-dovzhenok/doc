@@ -12,7 +12,7 @@ class AuthorView(ListView):
     context_object_name='author_list'
 
 class AuthorDetail(DetailView):
-    model=Author
+    mdocodel=Author
     template_name='matan/author_detail.html'
     context_object_name='author'
 
@@ -65,17 +65,22 @@ class PoiskView(View):
 def base(request):
     base=Theorem.objects.all()[:3]
     return render_to_response('matan/base.html', {'base': base})
-'''
-def alfa(request):
-    list = []
-    list = Theorem.objects.all()[0]
-    for i in list
-        i.list.
 
+
+def alfa(request):
+    list = Theorem.objects.all()
+    for i in list:
+        return render_to_response('matan/alfa.html', {'i': i, 'list': list})
+
+
+'''
 def poisk(request):
     if 'q' in request.GET:
         q = request.GET['q']
         poisk = Term.objects.filter(titli__icontains=q)
     return render_to_response('matan/poisk.html', {'poisk': poisk, 'query': q})
+ for i in range(1,100000):
+        if 'a'<=chr(i)<='z' or 'A'<=chr(i)<='Z':
+            return render_to_response('matan/alfa.html', {'chr': chr(i)})
 '''
 

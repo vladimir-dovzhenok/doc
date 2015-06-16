@@ -16,4 +16,5 @@ urlpatterns = patterns('',
     url(r'^poisk/$', views.PoiskView.as_view()),
     url(r'^categories/$', views.CategoriesView.as_view(), name='categories_list'),
     url(r'^categories/(?P<pk>\d+)$', views.CategoriesDetail.as_view(), name='categories_detail'),
+    url(r'^alfa/$', 'matan.views.alfa', name='alfa'),
     )
