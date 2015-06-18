@@ -1,20 +1,20 @@
 {% extends 'matan/base.html' %}
 {% block content %}
-    <p>Вы искали {{ query }}</p>
-    {% if poisk %}
-        <p>Найдено {{poisk|length}}</p>
+    <p>Вы искали {{ search-input }}</p>
+    {% if result %}
+        <p>Найдено {{result|length}}</p>
         <ul>
 
 
-         {% for theorem in poisk %}
+         {% for theorem in result %}
             <li><a href="{% url 'theorem_detail' pk=theorem.id %}">{{ theorem }}</a></li>
          {% endfor %}
 
-         {% for term in poisk.all %}
+         {% for term in result.all %}
              <li><a href="{% url 'term_detail' pk=term.id %}">{{ term }}</a></li>
          {% endfor %}
 
-         {% for author in poisk.all %}
+         {% for author in result.all %}
             <li><a href="{% url 'author_detail' pk=author.id %}">{{ author }} </a></li>
          {% endfor %}
 

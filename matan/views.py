@@ -55,56 +55,70 @@ class CategoriesDetail(DetailView):
     context_object_name = 'categories'
 
 
-class PoiskView(View):
+class SearchView(View):
     def get(self, request):
-        if 'q' in request.GET:
-            q = request.GET['q']
+        if 'search-input' in request.GET:
+            search = request.GET['search-input']
         # называть переменные одной буквой - дурной тон. со временем не понять зачем эта переменная была создана
         #занимается поиском - search, содержит результат - result, и т.д 
         #английский хотябы здесь пригодится. хотя и дальше тоже
 
-        poisk = Theorem.objects.filter(title__icontains=q)
-        if not poisk:
-            poisk = Term.objects.filter(title__icontains=q)
-        if not poisk:
-            poisk = Author.objects.filter(last_name__icontains=q)
-        return render_to_response('matan/poisk.html', {'poisk': poisk, 'query': q})
+        result = Theorem.objects.filter(title__icontains=search)
+        if not result:
+            result = Term.objects.filter(title__icontains=search)
+        if not result:
+            result = Author.objects.filter(last_name__icontains=search)
+        return render_to_response('matan/search.html', {'result': result, 'search-input': search})
 
 
 def base(request):
     base = Theorem.objects.all()[:3]
     return render_to_response('matan/base.html', {'base': base})
 
-
-
-def alfa(request):
-    list = Theorem.objects.all()
-    for i in list:
-        return render_to_response('matan/alfa.html', {'i': i, 'list': list})
-
-
-
-
-
-'''
 #если ты хотел проработать алфавит, то чуть интереснее будет оформить его так:
+'''
+def alpha(request):
 
-class Имя_класса_который_рендерит_страницу_где_будет_алфавит(наследование):
-    template = 'шаблон'
+        alphabet = ['А','Б','В','Г','Д','Е','Ё','Ж','З','И','Й',
+                    'К','Л','М','Н','О','П','Р','С','Т','У','Ф',
+                    'Х','Ц','Ч','Ш','Щ','Ъ','Ы','Ь','Э','Ю','Я',
+                    'а','б','в','г','д','е','ё','ж','з','и','й',
+                    'к','л','м','н','о','п','р','с','т','у','ф',
+                    'х','ц','ч','ш','щ','ъ','ы','ь','э','ю','я',]
+
+        for i in range(65,123):
+            if 'a'<=chr(i)<='z' or 'A'<=chr(i)<='Z':
+                alphabet_english = chr(i)
+                alphabet.append(alphabet_english)
+        return render_to_response('matan/theorem_list.html', {'alpha': alphabet})
+'''
+class Alphabet(View):
+    template_name = 'matan/alphabet.html'
 
     def get_context_data(self):
-        context = super(Имя_класса_который_рендерит_страницу_где_будет_алфавит, self).get_context_data(self)
+        context = super(Alphabet, self).get_context_data(self)
 
         alpha_context = {}
-        alphabit = 'каким то образом создаёшь алфавит, только интерируемый, т.е. который можно обойти циклом'
-        for i in alphabit:
-            result =  Theorem.objects.filter(title__istartswith=i)
+
+        alphabet = ['А','Б','В','Г','Д','Е','Ё','Ж','З','И','Й',
+                    'К','Л','М','Н','О','П','Р','С','Т','У','Ф',
+                    'Х','Ц','Ч','Ш','Щ','Ъ','Ы','Ь','Э','Ю','Я',
+                    'а','б','в','г','д','е','ё','ж','з','и','й',
+                    'к','л','м','н','о','п','р','с','т','у','ф',
+                    'х','ц','ч','ш','щ','ъ','ы','ь','э','ю','я',]
+        for n in range(65,123):
+            if 'a'<=chr(n)<='z' or 'A'<=chr(n)<='Z':
+                alphabet_english = chr(n)
+                alphabet.append(alphabet_english)
+
+        for i in alphabet:
+            result = Theorem.objects.filter(title__istartswith=i)
             if result:
                 alpha_context[i] = result
 
-        context['alphabit_dict'] = alpha_context
+        context['alphabet_dict'] = alpha_context
         return context
-
+'''
 вроде как должно работать. не обижайся, что написал за тебя. будет ещё много фишек, на которых будешь учится.
 alphabit_dict можно будет использовать циклом в шаблоне и ключ использовать в качестве буквы алфавита, допустим так:
 
@@ -117,6 +131,8 @@ alphabit_dict можно будет использовать циклом в ш�
     </ul>
 {% endfor %}
 
+for i in range(65,123):
+            if 'a'<=chr(i)<='z' or 'A'<=chr(i)<='Z':
 только вот не уверен за alpha_context[alpha] внутри шаблона.. может быть придётся брать доступ по ключу иначе.
 выходит так в цикле {% for alpha in alpha_context %} мы перебираем не значения, а ключи словаря. а чтобы получить значения -
 нужно обратиться к словарю через ключ: alpha_context[alpha]

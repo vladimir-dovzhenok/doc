@@ -1,6 +1,11 @@
 {% extends 'matan/base.html' %}
 {% block title %}Теоремы{% endblock %}
 {% block content %}
+        {% if alpha %}
+        {% for i in alpha %}
+            {{ i }}:
+        {% endfor %}
+    {% endif %}
     {% if theorem_list %}
         {% for theorem in theorem_list %}
             <h2><a href = "{% url 'theorem_detail'  pk=theorem.id %}">{{ theorem.title }}</a></h2>

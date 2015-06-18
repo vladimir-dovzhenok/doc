@@ -51,9 +51,9 @@
                     <li id="menu-item-34" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-34">
                         <a href="{% url 'categories_list' %}">categories</a></li>
                     <li id="menu-item-31" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-31">
-                        <a href="https://ru.wikipedia.org/wiki/Категория:Порталы_по_алфавиту">alphabet</a></li>
+                        <a href="{% url 'alphabet' %}">alphabet</a></li>
                     <li id="menu-item-33" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-33">
-                        <a href="#" data-toggle="modal" data-target="#mySearch">search</a></li>
+                        <a href="{% url 'search' %}" data-toggle="modal" data-target="#mySearch">search</a></li>
                     <li id="menu-item-32" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-32">
                         <a href="#">our university</a></li>
                 </ul>
@@ -94,6 +94,7 @@
 					{% endblock %}
             </div>
             <div class="col-md-1">
+
             </div>
         </div>
     </div>
