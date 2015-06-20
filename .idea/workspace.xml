@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4ae4c8f-3df6-43a2-8652-9aeeeab0b6f4" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/matan/templates/matan/theorem_list.html" afterPath="$PROJECT_DIR$/matan/templates/matan/theorem_list.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/matan/templates/matan/base.html" afterPath="$PROJECT_DIR$/matan/templates/matan/base.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/matan/urls.py" afterPath="$PROJECT_DIR$/matan/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/matan/views.py" afterPath="$PROJECT_DIR$/matan/views.py" />
     </list>
     <ignored path="doc.iws" />
@@ -31,21 +32,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="alpha.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/matan/templates/matan/alpha.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="270">
-              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="7" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="alphabet.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/matan/templates/matan/alphabet.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="126" max-vertical-offset="324">
-              <caret line="7" column="37" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
+            <state vertical-scroll-proportion="-4.0" vertical-offset="0" max-vertical-offset="234">
+              <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -55,26 +46,26 @@
         <entry file="file://$PROJECT_DIR$/matan/urls.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-10.44" vertical-offset="9" max-vertical-offset="396">
-              <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+              <caret line="18" column="64" selection-start-line="18" selection-start-column="56" selection-end-line="18" selection-end-column="64" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/matan/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="4.04" vertical-offset="479" max-vertical-offset="3222">
-              <caret line="26" column="31" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
+            <state vertical-scroll-proportion="0.7936963" vertical-offset="1451" max-vertical-offset="3420">
+              <caret line="101" column="28" selection-start-line="101" selection-start-column="28" selection-end-line="101" selection-end-column="28" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="theorem_list.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="theorem_list.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/matan/templates/matan/theorem_list.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.25" vertical-offset="0" max-vertical-offset="450">
+            <state vertical-scroll-proportion="-3.3333333" vertical-offset="0" max-vertical-offset="450">
               <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
               <folding />
             </state>
@@ -95,7 +86,7 @@
         <entry file="file://$PROJECT_DIR$/matan/templates/matan/base.html">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-7.740741" vertical-offset="745" max-vertical-offset="2178">
-              <caret line="53" column="34" selection-start-line="53" selection-start-column="34" selection-end-line="53" selection-end-column="34" />
+              <caret line="53" column="49" selection-start-line="53" selection-start-column="49" selection-end-line="53" selection-end-column="49" />
               <folding />
             </state>
           </provider>
@@ -112,11 +103,11 @@
         <option value="$PROJECT_DIR$/matan/templates/matan/alpha.html" />
         <option value="$PROJECT_DIR$/matan/templates/matan/term_list.html" />
         <option value="$PROJECT_DIR$/matan/templates/matan/poisk.html" />
-        <option value="$PROJECT_DIR$/matan/templates/matan/alphabet.html" />
+        <option value="$PROJECT_DIR$/matan/templates/matan/theorem_list.html" />
         <option value="$PROJECT_DIR$/matan/urls.py" />
         <option value="$PROJECT_DIR$/matan/templates/matan/base.html" />
+        <option value="$PROJECT_DIR$/matan/templates/matan/alphabet.html" />
         <option value="$PROJECT_DIR$/matan/views.py" />
-        <option value="$PROJECT_DIR$/matan/templates/matan/theorem_list.html" />
       </list>
     </option>
   </component>
@@ -678,20 +669,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/matan/templates/matan/alphabet.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="126" max-vertical-offset="324">
-          <caret line="7" column="37" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/doc/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="591">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#51#0" expanded="true" />
+            <element signature="e#0#51#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -704,18 +687,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/matan/templates/matan/base.html">
+    <entry file="file://$PROJECT_DIR$/matan/templates/matan/theorem_list.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.740741" vertical-offset="745" max-vertical-offset="2178">
-          <caret line="53" column="34" selection-start-line="53" selection-start-column="34" selection-end-line="53" selection-end-column="34" />
+        <state vertical-scroll-proportion="-3.3333333" vertical-offset="0" max-vertical-offset="450">
+          <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/matan/views.py">
+    <entry file="file://$PROJECT_DIR$/matan/templates/matan/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="4.04" vertical-offset="479" max-vertical-offset="3222">
-          <caret line="26" column="31" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
+        <state vertical-scroll-proportion="-7.740741" vertical-offset="745" max-vertical-offset="2178">
+          <caret line="53" column="49" selection-start-line="53" selection-start-column="49" selection-end-line="53" selection-end-column="49" />
           <folding />
         </state>
       </provider>
@@ -723,15 +706,23 @@
     <entry file="file://$PROJECT_DIR$/matan/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-10.44" vertical-offset="9" max-vertical-offset="396">
-          <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+          <caret line="18" column="64" selection-start-line="18" selection-start-column="56" selection-end-line="18" selection-end-column="64" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/matan/templates/matan/theorem_list.html">
+    <entry file="file://$PROJECT_DIR$/matan/templates/matan/alphabet.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25" vertical-offset="0" max-vertical-offset="450">
-          <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
+        <state vertical-scroll-proportion="-4.0" vertical-offset="0" max-vertical-offset="234">
+          <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/matan/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7936963" vertical-offset="1451" max-vertical-offset="3420">
+          <caret line="101" column="28" selection-start-line="101" selection-start-column="28" selection-end-line="101" selection-end-column="28" />
           <folding />
         </state>
       </provider>

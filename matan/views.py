@@ -94,10 +94,21 @@ class SearchView(View):
             result = Author.objects.filter(last_name__icontains=search)
         return render_to_response('matan/search.html', {'result': result, 'search-input': search})
 
+class Alphabet(View):
+    def get(self, request):
+        alphabet = ['А','Б','В','Г','Д','Е','Ё','Ж','З','И','Й',
+                    'К','Л','М','Н','О','П','Р','С','Т','У','Ф',
+                    'Х','Ц','Ч','Ш','Щ','Ъ','Ы','Ь','Э','Ю','Я',]
+        for n in range(65,96):
+            if 'a'<=chr(n)<='z' or 'A'<=chr(n)<='Z':
+                alphabet_english = chr(n)
+                alphabet.append(alphabet_english)
+        return render_to_response('matan/alphabet.html', {'alphabet': alphabet})
 
 def base(request):
     base = Theorem.objects.all()[:3]
     return render_to_response('matan/base.html', {'base': base})
+
 
 #если ты хотел проработать алфавит, то чуть интереснее будет оформить его так:
 '''

@@ -16,5 +16,5 @@ urlpatterns = patterns('',
     url(r'^search/$', views.SearchView.as_view(), name='search'),
     url(r'^categories/$', views.CategoriesView.as_view(), name='categories_list'),
     url(r'^categories/(?P<pk>\d+)$', views.CategoriesDetail.as_view(), name='categories_detail'),
-    #url(r'^alphabet/$', views.Alphabet.as_view(), name='alphabet'),
+    url(r'^alphabet/$', views.Alphabet.as_view(), name='alphabet'),
     )
