@@ -2,8 +2,8 @@
 {% block title %}Теоремы{% endblock %}
 {% block content %}
         {% if alphabet %}
-        {% for i in alphabet %}
-            {{ i }}:
+        {% for alpha in alphabet %}
+            <a href = "#">{{ alpha }} </a>
         {% endfor %}
     {% endif %}
     {% if theorem_list %}

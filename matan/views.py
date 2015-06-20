@@ -25,7 +25,7 @@ class TheoremView(ListView):
     context_object_name = 'theorem_list'
 
     def get_context_data(self, **kwards):
-        context = super(TheoremView, self).get_context_data( **kwards)
+        context = super(TheoremView, self).get_context_data(**kwards)
 
         alpha_context = {}
 
@@ -40,7 +40,12 @@ class TheoremView(ListView):
                 alphabet_english = chr(n)
                 alphabet.append(alphabet_english)
 
-        context['alphabet'] = alphabet
+        for i in alphabet:
+            result = Theorem.objects.filter(title__istartswith=i)
+            if result:
+                alpha_context[i] = result
+
+        context['alphabet'] = alpha_context
         return context
 
 
