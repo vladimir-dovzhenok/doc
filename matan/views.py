@@ -24,6 +24,25 @@ class TheoremView(ListView):
     template_name = 'matan/theorem_list.html'
     context_object_name = 'theorem_list'
 
+    def get_context_data(self, **kwards):
+        context = super(TheoremView, self).get_context_data( **kwards)
+
+        alpha_context = {}
+
+        alphabet = ['А','Б','В','Г','Д','Е','Ё','Ж','З','И','Й',
+                    'К','Л','М','Н','О','П','Р','С','Т','У','Ф',
+                    'Х','Ц','Ч','Ш','Щ','Ъ','Ы','Ь','Э','Ю','Я',
+                    'а','б','в','г','д','е','ё','ж','з','и','й',
+                    'к','л','м','н','о','п','р','с','т','у','ф',
+                    'х','ц','ч','ш','щ','ъ','ы','ь','э','ю','я',]
+        for n in range(65,123):
+            if 'a'<=chr(n)<='z' or 'A'<=chr(n)<='Z':
+                alphabet_english = chr(n)
+                alphabet.append(alphabet_english)
+
+        context['alphabet'] = alphabet
+        return context
+
 
 class TheoremDetail(DetailView):
     model = Theorem
@@ -91,7 +110,7 @@ def alpha(request):
                 alphabet_english = chr(i)
                 alphabet.append(alphabet_english)
         return render_to_response('matan/theorem_list.html', {'alpha': alphabet})
-'''
+
 class Alphabet(View):
     template_name = 'matan/alphabet.html'
 
@@ -118,7 +137,7 @@ class Alphabet(View):
 
         context['alphabet_dict'] = alpha_context
         return context
-'''
+
 вроде как должно работать. не обижайся, что написал за тебя. будет ещё много фишек, на которых будешь учится.
 alphabit_dict можно будет использовать циклом в шаблоне и ключ использовать в качестве буквы алфавита, допустим так:
 
